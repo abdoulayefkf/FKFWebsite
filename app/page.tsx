@@ -1,65 +1,155 @@
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-screen bg-white">
+
+      {/* HERO SECTION */}
+      <section className="max-w-6xl mx-auto px-6 py-24 flex flex-col items-center text-center">
+
+        {/* HEADLINE */}
+        <h1 className="max-w-4xl text-5xl md:text-6xl font-semibold tracking-tight leading-tight">
+          Empowering the Next Generation of Global Leaders and Changemakers
+        </h1>
+
+        {/* SUBHEADLINE */}
+        <p className="max-w-3xl mt-8 text-lg md:text-xl text-gray-600 leading-relaxed">
+          The Francis Koroma Foundation supports young people through academic
+          assistance, mentorship, leadership development, and transitional
+          guidance that prepares them to become impactful leaders in their
+          communities and beyond.
+        </p>
+
+        {/* CTA BUTTONS */}
+        <div className="flex flex-wrap justify-center gap-4 mt-10">
+          <Button size="lg">
+            Get Involved
+          </Button>
+
+          <Button variant="outline" size="lg">
+            Learn More
+          </Button>
+        </div>
+      </section>
+
+      {/* ABOUT PREVIEW */}
+      <section className="border-t">
+        <div className="max-w-6xl mx-auto px-6 py-20">
+
+          <div className="max-w-4xl">
+            <p className="text-sm uppercase tracking-wider text-gray-500 mb-4">
+              About the Foundation
+            </p>
+
+            <h2 className="text-3xl md:text-4xl font-semibold mb-6">
+              Supporting Young Adults Through Education, Mentorship, and Leadership Development
+            </h2>
+
+            <p className="text-lg text-gray-600 leading-relaxed">
+              The Francis Koroma Foundation is a U.S.-based 501(c)(3)
+              nonprofit organization committed to helping young people
+              successfully navigate the transition into adulthood through
+              academic support, mentorship opportunities, leadership training,
+              and personal development initiatives.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* FOCUS AREAS */}
+      <section className="bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6 py-20">
+
+          <p className="text-sm uppercase tracking-wider text-gray-500 mb-4">
+            What We Do
           </p>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            <div className="bg-white p-8 rounded-lg border">
+              <h3 className="text-xl font-semibold mb-4">
+                Academic Support
+              </h3>
+
+              <p className="text-gray-600">
+                Providing educational resources and support systems that help
+                students achieve their academic goals.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg border">
+              <h3 className="text-xl font-semibold mb-4">
+                Mentorship Programs
+              </h3>
+
+              <p className="text-gray-600">
+                Connecting young people with mentors who provide guidance,
+                encouragement, and professional insight.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg border">
+              <h3 className="text-xl font-semibold mb-4">
+                Leadership Development
+              </h3>
+
+              <p className="text-gray-600">
+                Equipping future leaders with the skills, confidence, and
+                opportunities needed to create meaningful change.
+              </p>
+            </div>
+
+          </div>
+
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* IMPACT SECTION */}
+      <section>
+        <div className="max-w-6xl mx-auto px-6 py-20">
+
+          <div className="max-w-4xl">
+            <p className="text-sm uppercase tracking-wider text-gray-500 mb-4">
+              Our Vision
+            </p>
+
+            <h2 className="text-3xl md:text-4xl font-semibold mb-6">
+              Building a Future Defined by Leadership, Opportunity, and Service
+            </h2>
+
+            <p className="text-lg text-gray-600 leading-relaxed">
+              We envision a world where every young person has access to the
+              mentorship, educational support, and leadership opportunities
+              necessary to realize their full potential and contribute
+              positively to society.
+            </p>
+          </div>
+
         </div>
-      </main>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="border-t">
+        <div className="max-w-6xl mx-auto px-6 py-20 text-center">
+
+          <h2 className="text-3xl md:text-4xl font-semibold mb-6">
+            Join Us in Shaping Tomorrow's Leaders
+          </h2>
+
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+            Together, we can provide the guidance, opportunities, and support
+            that empower young people to become leaders and changemakers.
+          </p>
+
+          <Button size="lg">
+            Support Our Mission
+          </Button>
+
+        </div>
+      </section>
+
     </div>
   );
 }
