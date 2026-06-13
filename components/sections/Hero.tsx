@@ -1,48 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
-const heroImages = [
-  "/hero/hero-1.jpg",
-  "/hero/hero-2.jpg",
-  "/hero/hero-3.jpg",
-  "/hero/hero-4.jpg",
-];
-
 export default function Hero() {
-  const [currentImage, setCurrentImage] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) =>
-        prev === heroImages.length - 1 ? 0 : prev + 1
-      );
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden pt-16">
 
-      {/* Background Image/video */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/De-BByJLQxw?autoplay=1&mute=1&loop=1&playlist=De-BByJLQxw&controls=0&modestbranding=1&showinfo=0"
-                title="FKF Hero Video"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-            />
-       </div>
+      {/* VIDEO BACKGROUND */}
+      <div className="absolute inset-0 overflow-hidden z-0">
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+        <iframe
+          className="absolute top-1/2 left-1/2 w-[120vw] h-[120vh] -translate-x-1/2 -translate-y-1/2"
+          src="https://www.youtube.com/embed/De-BByJLQxw?autoplay=1&mute=1&loop=1&playlist=De-BByJLQxw&controls=0&modestbranding=1&showinfo=0"
+          title="FKF Hero Video"
+          allow="autoplay; encrypted-media"
+        />
 
-      {/* Content */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      </div>
+
+      {/* DARK OVERLAY */}
+      <div className="absolute inset-0 bg-black/20 z-10" />
+
+      {/* CONTENT */}
+      <div className="relative z-20 flex items-center justify-center h-full">
 
         <div className="max-w-5xl text-center text-white px-6">
 
@@ -56,7 +36,11 @@ export default function Hero() {
 
           <div className="flex flex-wrap justify-center gap-4 mt-10">
 
-            <Button size="lg">
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-transparent text-white border-white hover:bg-white hover:text-black"
+            >
               Get Involved
             </Button>
 

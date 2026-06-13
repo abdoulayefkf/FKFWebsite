@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <header className="w-full border-b bg-white">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white/100 backdrop-blur-md border-b border-black/5">
+      <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
 
         {/* Logo */}
         <Link href="/" className="flex items-center">
@@ -23,7 +23,7 @@ export default function Navbar() {
         <nav className="flex items-center gap-8">
           <Link
             href="/about"
-            className="text-sm font-medium hover:text-gray-600 transition-colors"
+            className="text-m font-medium hover:text-gray-600 transition-colors"
           >
             About
           </Link>
