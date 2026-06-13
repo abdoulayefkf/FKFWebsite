@@ -9,7 +9,7 @@ export default function FocusAreas() {
         {/* HEADER */}
         <div className="mb-14 max-w-2xl">
 
-          <p className="text-sm uppercase tracking-wider text-yellow-500 font-medium">
+          <p className="text-lg uppercase tracking-wider text-yellow-500 font-medium">
             What We Do
           </p>
 
@@ -32,7 +32,7 @@ export default function FocusAreas() {
             <div className="group cursor-pointer rounded-2xl overflow-hidden border border-gray-100 bg-white hover:shadow-xl transition">
 
               {/* IMAGE */}
-              <div className="relative h-48 w-full">
+              <div className="relative h-72 w-full">
                 <Image
                   src="/focus/academic.jpg"
                   alt="Academic Support"
@@ -66,7 +66,7 @@ export default function FocusAreas() {
           <Link href="/programs/mentorship">
             <div className="group cursor-pointer rounded-2xl overflow-hidden border border-gray-100 bg-white hover:shadow-xl transition">
 
-              <div className="relative h-48 w-full">
+              <div className="relative h-72 w-full">
                 <Image
                   src="/focus/mentorship.jpg"
                   alt="Mentorship Programs"
@@ -99,7 +99,7 @@ export default function FocusAreas() {
           <Link href="/programs/leadership">
             <div className="group cursor-pointer rounded-2xl overflow-hidden border border-gray-100 bg-white hover:shadow-xl transition">
 
-              <div className="relative h-48 w-full">
+              <div className="relative h-72 w-full">
                 <Image
                   src="/focus/leadership.jpg"
                   alt="Leadership Development"
