@@ -16,7 +16,7 @@ export default function VisionSection() {
             fill
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 " />
         </div>
 
         {/* CONTENT */}
