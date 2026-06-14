@@ -25,11 +25,11 @@ export default function FocusAreas() {
         </div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 gap-10 ">
 
           {/* CARD 1 */}
           <Link href="/programs/academic-support">
-            <div className="group cursor-pointer rounded-2xl overflow-hidden border border-gray-100 bg-white hover:shadow-xl transition">
+            <div className="group cursor-pointer rounded-2xl overflow-hidden border border-gray-100 bg-white hover:shadow-xl transition shadow-2xl">
 
               {/* IMAGE */}
               <div className="relative h-72 w-full">
@@ -64,7 +64,7 @@ export default function FocusAreas() {
 
           {/* CARD 2 */}
           <Link href="/programs/mentorship">
-            <div className="group cursor-pointer rounded-2xl overflow-hidden border border-gray-100 bg-white hover:shadow-xl transition">
+            <div className="group cursor-pointer rounded-2xl overflow-hidden border border-gray-100 bg-white hover:shadow-xl transition shadow-2xl">
 
               <div className="relative h-72 w-full">
                 <Image
@@ -97,7 +97,7 @@ export default function FocusAreas() {
 
           {/* CARD 3 */}
           <Link href="/programs/leadership">
-            <div className="group cursor-pointer rounded-2xl overflow-hidden border border-gray-100 bg-white hover:shadow-xl transition">
+            <div className="group cursor-pointer rounded-2xl overflow-hidden border border-gray-100 bg-white hover:shadow-xl transition shadow-2xl">
 
               <div className="relative h-72 w-full">
                 <Image

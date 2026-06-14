@@ -2,14 +2,31 @@
 
 import Image from "next/image";
 
+
+import { motion } from "framer-motion";
+
+
+
 export default function VisionSection() {
   return (
     <>
       {/* VISION HERO */}
-      <section className="relative w-screen h-[900px] overflow-hidden">
+
+      <motion.div
+  initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 1.0 }}
+>
+  {/* Section Content */}
+
+
+
+
+      <section className="relative w-[1500px] h-[800px] object-center  rounded-2xl overflow-hidden mx-auto shadow-2xl">
 
         {/* BACKGROUND IMAGE */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-y-0 left-10 right-10 rounded-2xl overflow-hidden">
           <Image
             src="/vision/vision-bg.jpg"
             alt="FKF Vision Background"
@@ -63,6 +80,8 @@ export default function VisionSection() {
         </div>
 
       </section>
+
+      </motion.div>
     </>
   );
 }

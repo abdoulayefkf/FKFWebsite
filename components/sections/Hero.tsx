@@ -11,7 +11,7 @@ export default function Hero() {
 
         <iframe
           className="absolute top-1/2 left-1/2 w-[120vw] h-[120vh] -translate-x-1/2 -translate-y-1/2"
-          src="https://www.youtube.com/embed/De-BByJLQxw?autoplay=1&mute=1&loop=1&playlist=De-BByJLQxw&controls=0&modestbranding=1&showinfo=0"
+          src="https://www.youtube.com/embed/De-BByJLQxw?start=0:00&autoplay=1&mute=1&loop=1&playlist=De-BByJLQxw&controls=0&modestbranding=1&showinfo=0"
           title="FKF Hero Video"
           allow="autoplay; encrypted-media"
         />

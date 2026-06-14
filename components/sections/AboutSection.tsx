@@ -3,10 +3,10 @@ import Image from "next/image";
 export default function AboutSection() {
   return (
     <section className="border-t bg-white items-center">
-      <div className="max-w-10xl mx-auto px-55 py-30">
+      <div className="max-w-10xl mx-auto px-55 py-30 ">
 
         {/* AMBER CARD */}
-        <div className="bg-yellow-300 rounded-xl overflow-hidden flex flex-col md:flex-row max-w-5xl">
+        <div className="bg-yellow-300 rounded-xl overflow-hidden flex flex-col md:flex-row max-w-5xl  transition shadow-2xl">
 
           {/* TEXT SIDE */}
           <div className="flex-1 p-10 md:p-14">

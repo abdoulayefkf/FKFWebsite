@@ -13,7 +13,7 @@ export default function ImpactSection() {
         {/* HEADER */}
 <div className="text-center ">
 
-  <div className="inline-block bg-gray-100 backdrop-blur-sm rounded-2xl px-10 py-8 shadow-x1 mb-6">
+  <div className="inline-block bg-gray-50 backdrop-blur-sm rounded-2xl px-10 py-8 shadow-2xl mb-6">
 
     <p className="uppercase tracking-[0.25em] text-yellow-500 font-semibold">
       Our Impact
@@ -37,7 +37,7 @@ export default function ImpactSection() {
         <div className="grid md:grid-cols-4 gap-6 auto-rows-[280px]">
 
           {/* TILE 1 */}
-          <div className="relative rounded-2xl overflow-hidden">
+          <div className="relative rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105">
             <Image
               src="/impact/impact-1.jpg"
               alt="Students Supported"
@@ -45,7 +45,7 @@ export default function ImpactSection() {
               className="object-cover"
             />
 
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/10" />
 
             <div className="absolute bottom-0 p-6 text-white">
               <p className="text-5xl font-bold text-yellow-300">500+</p>
@@ -54,7 +54,7 @@ export default function ImpactSection() {
           </div>
 
           {/* FEATURED TILE */}
-          <div className="relative rounded-2xl overflow-hidden md:col-span-2 md:row-span-2">
+          <div className="relative rounded-2xl overflow-hidden md:col-span-2 md:row-span-2 transition-all duration-300 hover:scale-105">
             <Image
               src="/impact/impact-featured.jpg"
               alt="Lives Impacted"
@@ -62,7 +62,7 @@ export default function ImpactSection() {
               className="object-cover"
             />
 
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/5" />
 
             <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-8">
 
@@ -83,7 +83,7 @@ export default function ImpactSection() {
           </div>
 
           {/* TILE 2 */}
-          <div className="relative rounded-2xl overflow-hidden">
+          <div className="relative rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 transition-all duration-300 hover:scale-105">
             <Image
               src="/impact/impact-2.jpg"
               alt="Mentors"
@@ -91,7 +91,7 @@ export default function ImpactSection() {
               className="object-cover"
             />
 
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/10" />
 
             <div className="absolute bottom-0 p-6 text-white">
               <p className="text-5xl font-bold text-yellow-300">50+</p>
@@ -100,7 +100,7 @@ export default function ImpactSection() {
           </div>
 
           {/* TILE 3 */}
-          <div className="relative rounded-2xl overflow-hidden">
+          <div className="relative rounded-2xl overflow-hidden hover:scale-105">
             <Image
               src="/impact/impact-3.jpg"
               alt="Programs"
@@ -108,7 +108,7 @@ export default function ImpactSection() {
               className="object-cover"
             />
 
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/10" />
 
             <div className="absolute bottom-0 p-6 text-white">
               <p className="text-5xl font-bold text-yellow-300">15+</p>
@@ -117,7 +117,7 @@ export default function ImpactSection() {
           </div>
 
           {/* TILE 4 */}
-          <div className="relative rounded-2xl overflow-hidden">
+          <div className="relative rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105">
             <Image
               src="/impact/impact-4.jpg"
               alt="Partners"
@@ -125,7 +125,7 @@ export default function ImpactSection() {
               className="object-cover"
             />
 
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/10" />
 
             <div className="absolute bottom-0 p-6 text-white">
               <p className="text-5xl font-bold text-yellow-300">10+</p>
@@ -134,7 +134,7 @@ export default function ImpactSection() {
           </div>
 
           {/* TILE 5 */}
-          <div className="relative rounded-2xl overflow-hidden">
+          <div className="relative rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105">
             <Image
               src="/impact/impact-5.jpg"
               alt="Communities"
@@ -142,7 +142,7 @@ export default function ImpactSection() {
               className="object-cover"
             />
 
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/10" />
 
             <div className="absolute bottom-0 p-6 text-white">
               <p className="text-5xl font-bold text-yellow-300">20+</p>
@@ -151,7 +151,7 @@ export default function ImpactSection() {
           </div>
 
           {/* TILE 6 */}
-          <div className="relative rounded-2xl overflow-hidden">
+          <div className="relative rounded-2xl overflow-hidden hover:scale-105">
             <Image
               src="/impact/impact-6.jpg"
               alt="Mission Driven"
@@ -159,7 +159,7 @@ export default function ImpactSection() {
               className="object-cover"
             />
 
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/10" />
 
             <div className="absolute bottom-0 p-6 text-white">
               <p className="text-5xl font-bold text-yellow-300">100%</p>
@@ -170,7 +170,7 @@ export default function ImpactSection() {
 
 
           {/* TILE 7 */}
-          <div className="relative rounded-2xl overflow-hidden">
+          <div className="relative rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105">
             <Image
               src="/impact/impact-7.jpg"
               alt="Mission Driven"
@@ -178,7 +178,7 @@ export default function ImpactSection() {
               className="object-cover"
             />
 
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/10" />
 
             <div className="absolute bottom-0 p-6 text-white">
               <p className="text-5xl font-bold text-yellow-300">100%</p>
@@ -187,7 +187,7 @@ export default function ImpactSection() {
           </div>
 
           {/* TILE 8 */}
-          <div className="relative rounded-2xl overflow-hidden">
+          <div className="relative rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105">
             <Image
               src="/impact/impact-8.jpg"
               alt="Mission Driven"
@@ -195,7 +195,7 @@ export default function ImpactSection() {
               className="object-cover"
             />
 
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/10" />
 
             <div className="absolute bottom-0 p-6 text-white">
               <p className="text-5xl font-bold text-yellow-300">100%</p>
