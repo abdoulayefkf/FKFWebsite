@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ImpactSection() {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-24 overflow-hidden ">
 
 
       {/* CONTENT */}
@@ -13,9 +13,9 @@ export default function ImpactSection() {
         {/* HEADER */}
 <div className="text-center ">
 
-  <div className="inline-block bg-gray-50 backdrop-blur-sm rounded-2xl px-10 py-8 shadow-2xl mb-6">
+  <div className="inline-block bg-white backdrop-blur-sm rounded-2xl px-10 py-8 shadow-2xl  mb-6">
 
-    <p className="uppercase tracking-[0.25em] text-yellow-500 font-semibold">
+    <p className="uppercase tracking-[0.25em] text-yellow-500 font-semibold md:text-1xl">
       Our Impact
     </p>
 
@@ -83,7 +83,7 @@ export default function ImpactSection() {
           </div>
 
           {/* TILE 2 */}
-          <div className="relative rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 transition-all duration-300 hover:scale-105">
+          <div className="relative rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 hover:scale-105">
             <Image
               src="/impact/impact-2.jpg"
               alt="Mentors"
@@ -100,7 +100,7 @@ export default function ImpactSection() {
           </div>
 
           {/* TILE 3 */}
-          <div className="relative rounded-2xl overflow-hidden hover:scale-105">
+          <div className="relative rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300">
             <Image
               src="/impact/impact-3.jpg"
               alt="Programs"
@@ -151,7 +151,7 @@ export default function ImpactSection() {
           </div>
 
           {/* TILE 6 */}
-          <div className="relative rounded-2xl overflow-hidden hover:scale-105">
+          <div className="relative rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300">
             <Image
               src="/impact/impact-6.jpg"
               alt="Mission Driven"

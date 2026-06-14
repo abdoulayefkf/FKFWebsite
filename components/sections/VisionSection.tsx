@@ -1,64 +1,67 @@
 "use client";
 
 import Image from "next/image";
-
-
-import { motion } from "framer-motion";
-
-
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function VisionSection() {
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  // Premium parallax movement
+  const y = useTransform(scrollYProgress, [0, 1], [30, -30]);
+
+  // Slow cinematic zoom
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    [1, 1.03, 1.06]
+  );
+
   return (
     <>
       {/* VISION HERO */}
-
-      <motion.div
-  initial={{ opacity: 0, y: 60 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 1.0 }}
->
-  {/* Section Content */}
-
-
-
-
-      <section className="relative w-[1500px] h-[800px] object-center  rounded-2xl overflow-hidden mx-auto shadow-2xl">
-
-        {/* BACKGROUND IMAGE */}
-        <div className="absolute inset-y-0 left-10 right-10 rounded-2xl overflow-hidden">
+      <section
+        ref={ref}
+        className="relative w-[1500px] h-[800px] rounded-2xl overflow-hidden mx-auto shadow-2xl"
+      >
+        {/* IMAGE CONTAINER */}
+        <motion.div
+          style={{ scale, y }}
+          className="absolute inset-y-0 left-10 right-10 rounded-2xl overflow-hidden"
+        >
           <Image
-            src="/vision/vision-bg.jpg"
+            src="/vision/initiative.jpg"
             alt="FKF Vision Background"
             fill
+            priority
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 " />
-        </div>
+        </motion.div>
 
         {/* CONTENT */}
-        <div className="relative z-10 text-center text-yellow-400 px-6 py-28">
+        <div className="relative text-center text-yellow-400 px-6 py-28 -mt-25 z-10">
 
-         
-          {/* MAIN HEADING */}
-          <h2 className="text-4xl md:text-6xl font-semibold max-w-4xl mx-auto leading-tight">
+          <h3 className="text-3xl md:text-6xl font-semibold max-w-4xl mx-auto leading-tight">
             Building a Future Defined by Leadership, Opportunity, and Service
-          </h2>
+          </h3>
 
         </div>
-
       </section>
 
-      {/* VISION BODY TEXT */}
+      {/* BODY TEXT */}
       <section className="bg-white py-20">
 
         <div className="max-w-4xl mx-auto px-6">
 
-           {/* SUBHEADING */}
-          <p className="text-yellow-400 text-bold text-center uppercase tracking-[0.25em] font-semibold mb-6">
+          {/* SUBHEADING */}
+          <p className="text-yellow-400 text-center uppercase tracking-[0.25em] font-semibold mb-6">
             Our Vision
           </p>
-
 
           <p className="text-lg md:text-xl text-gray-700 leading-relaxed text-center">
             Our vision is to create a more just and equitable society that offers
@@ -80,8 +83,6 @@ export default function VisionSection() {
         </div>
 
       </section>
-
-      </motion.div>
     </>
   );
 }
