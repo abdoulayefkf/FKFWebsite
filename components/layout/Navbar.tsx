@@ -88,13 +88,7 @@ export default function Navbar() {
                 Leadership
               </Link>
 
-              <Link
-                href="/about/vision"
-                className="block px-5 py-3 hover:bg-gray-50 rounded-b-2xl"
-              >
-                Our Vision
-              </Link>
-
+             
             </div>
           </div>
 

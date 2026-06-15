@@ -408,7 +408,7 @@ export default function FounderPage() {
 </section>
 
 {/* IMPACT AREAS */}
-<section className="py-24 bg-white -mt-2">
+<section className="py-24 bg-white -mt-10">
   <div className="max-w-7xl mx-auto px-6">
 
     <div className="text-center mb-16">
@@ -570,7 +570,7 @@ export default function FounderPage() {
     {/* TIMELINE LINE */}
     <div className="relative mb-12">
 
-      <div className="absolute top-6 left-0 right-0 h-1 bg-yellow-200 rounded-full" />
+      <div className="absolute top-6 left-0 right-0 h-1 bg-yellow-400 rounded-full" />
 
       <div className="relative flex justify-between">
 
@@ -637,7 +637,7 @@ export default function FounderPage() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -15 }}
         transition={{ duration: 0.25 }}
-        className="bg-white border border-yellow-200 rounded-3xl p-8 text-center shadow-2xl max-w-3xl mx-auto"
+        className="bg-gray-100 border border-yellow-400 rounded-3xl p-8 text-center shadow-2xl max-w-3xl mx-auto"
       >
         <div className="text-yellow-500 font-bold text-lg mb-2">
           {
@@ -712,8 +712,39 @@ export default function FounderPage() {
       
 
 
-      {/* CTA */}
-      <section className="py-24 bg-black text-white">
+     
+      {/* FEATURE IMAGE */}
+<section className="relative h-[1100px]">
+
+  <Image
+    src="/founder/koroma.jpg"
+    alt="Francis Koroma"
+    fill
+    className="object-cover"
+  />
+
+  <div className="absolute inset-0 bg-black/30" />
+
+  <div className="absolute inset-0 flex items-center justify-center">
+
+    <div className="max-w-4xl text-center px-6">
+
+      <h2 className="text-white text-5xl md:text-7xl font-bold">
+        Empowering The Next Generation
+      </h2>
+
+      <p className="text-white text-xl mt-6">
+        Leadership. Service. Impact.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+ {/* CTA */}
+      <section className="py-10 bg-black text-white">
         <div className="max-w-5xl mx-auto px-6 text-center">
 
           <h2 className="text-5xl font-bold">
@@ -736,12 +767,13 @@ export default function FounderPage() {
               href="/donate"
               className="border border-white px-8 py-4 rounded-xl"
             >
-              Donate
+              Donate Now
             </Link>
           </div>
 
         </div>
       </section>
+
 
     </main>
   );

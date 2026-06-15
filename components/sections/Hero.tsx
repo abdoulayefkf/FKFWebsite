@@ -39,7 +39,7 @@ export default function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="bg-transparent text-white border-white hover:bg-white hover:text-black"
+              className="bg-transparent text-white border-yellow-400 hover:bg-white hover:text-black"
             >
               Get Involved
             </Button>
@@ -47,7 +47,7 @@ export default function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="bg-transparent text-white border-white hover:bg-white hover:text-black"
+              className="bg-transparent text-white border-yellow-400 hover:bg-white hover:text-black"
             >
               Learn More
             </Button>
