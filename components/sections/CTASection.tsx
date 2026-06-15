@@ -2,19 +2,35 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function CTASection() {
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  // LEFT TEXT MOTION
+  const textY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+
+  // IMAGE MOTION
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [20, -20]);
+
   return (
-    <section className="py-24 bg-white">
+    <section ref={ref} className="py-24 bg-white overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-6">
 
         <div className="grid md:grid-cols-2 gap-8 items-center">
 
           {/* LEFT SIDE */}
-          <div>
+          <motion.div style={{ y: textY }}>
 
-            <p className="uppercase tracking-[0.25em] text-yellow-500 font-semibold mb-4">
+            <p className="uppercase tracking-[0.25em] text-yellow-400 font-semibold mb-4">
               Get Involved
             </p>
 
@@ -28,19 +44,32 @@ export default function CTASection() {
               people to reach their full potential.
             </p>
 
-            <Button
-              size="lg"
-              className="mt-8 bg-yellow-500 hover:bg-yellow-600"
+            {/* ✨ ENHANCED BUTTON */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-block"
             >
-              Support Our Mission
-            </Button>
+              <Button
+                size="lg"
+                className="mt-8 bg-yellow-400 hover:bg-yellow-600 hover:shadow-xl transition-all duration-300 text-black"
+              >
+                Support Our Mission
+              </Button>
+            </motion.div>
 
-          </div>
+          </motion.div>
 
           {/* RIGHT SIDE IMAGE */}
-          <div className="flex justify-center ">
+          <motion.div
+            style={{ scale: imageScale, y: imageY }}
+            className="flex justify-center relative"
+          >
 
-            <div className="relative w-[450px] h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+            {/* ✨ BACKGROUND GLOW */}
+            <div className="absolute w-[420px] h-[420px] bg-yellow-300/30 rounded-full blur-3xl animate-pulse" />
+
+            <div className="relative w-[450px] h-[550px] rounded-3xl overflow-hidden shadow-2xl z-10">
 
               <Image
                 src="/cta/image.jpg"
@@ -51,7 +80,7 @@ export default function CTASection() {
 
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
 

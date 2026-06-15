@@ -22,17 +22,17 @@ export default function AboutSection() {
         <motion.div
           ref={ref}
           style={{ y, scale }}
-          className="bg-yellow-300 rounded-xl overflow-hidden flex flex-col md:flex-row max-w-5xl shadow-2xl"
+          className="bg-yellow-400 rounded-xl overflow-hidden flex flex-col md:flex-row max-w-5xl shadow-2xl"
         >
 
           {/* TEXT SIDE */}
           <div className="flex-1 p-10 md:p-14">
 
-            <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-black">
               Supporting Young Adults Through Education, Mentorship, and Leadership Development
             </h2>
 
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-lg text-black leading-relaxed">
               The mission of the Francis Koroma Foundation is to empower students
               to realize their full potential and become active contributors to
               society. We are dedicated to creating equal educational opportunities

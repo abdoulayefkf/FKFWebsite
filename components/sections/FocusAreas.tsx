@@ -18,13 +18,15 @@ export default function FocusAreas() {
   const y3 = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
-    <section className="bg-white mb-15 -mt-15">
+    <section className="bg-white mb-15 -mt-35">
       <div className="max-w-7xl mx-auto px-6 py-24">
 
+
         {/* HEADER */}
+        <motion.div style={{ y: y1 }}>
         <div className="mb-14 max-w-2xl">
 
-          <p className="text-lg uppercase tracking-wider text-yellow-500 font-medium">
+          <p className="text-lg uppercase tracking-wider text-yellow-400 font-medium">
             What We Do
           </p>
 
@@ -39,6 +41,8 @@ export default function FocusAreas() {
           </p>
 
         </div>
+        </motion.div>
+        
 
         {/* GRID */}
         <div
@@ -64,7 +68,7 @@ export default function FocusAreas() {
                 {/* CONTENT */}
                 <div className="p-8">
 
-                  <div className="w-10 h-10 mb-5 rounded-full bg-yellow-300 flex items-center justify-center">
+                  <div className="w-10 h-10 mb-5 rounded-full bg-yellow-400 flex items-center justify-center">
                     <span className="text-black font-bold">01</span>
                   </div>
 
@@ -99,7 +103,7 @@ export default function FocusAreas() {
 
                 <div className="p-8">
 
-                  <div className="w-10 h-10 mb-5 rounded-full bg-yellow-300 flex items-center justify-center">
+                  <div className="w-10 h-10 mb-5 rounded-full bg-yellow-400 flex items-center justify-center">
                     <span className="text-black font-bold">02</span>
                   </div>
 
@@ -134,7 +138,7 @@ export default function FocusAreas() {
 
                 <div className="p-8">
 
-                  <div className="w-10 h-10 mb-5 rounded-full bg-yellow-300 flex items-center justify-center">
+                  <div className="w-10 h-10 mb-5 rounded-full bg-yellow-400 flex items-center justify-center">
                     <span className="text-black font-bold">03</span>
                   </div>
 
