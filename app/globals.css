@@ -6,6 +6,16 @@
   scroll-behavior: smooth;
 }
 
+body { min-width: 320px; }
+a, button, summary { -webkit-tap-highlight-color: transparent; }
+.nav-link { border-radius: .25rem; padding: .75rem .25rem; font-size: .875rem; font-weight: 600; outline-offset: 4px; }
+.nav-link:hover { color: #9b7600; }
+.nav-link:focus-visible { outline: 2px solid #111; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

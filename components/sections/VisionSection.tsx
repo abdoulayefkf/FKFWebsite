@@ -27,12 +27,12 @@ export default function VisionSection() {
       {/* VISION HERO */}
       <section
         ref={ref}
-        className="relative w-[1500px] h-[800px] rounded-2xl overflow-hidden mx-auto shadow-2xl"
+        className="relative mx-auto h-[520px] w-[calc(100%-2rem)] max-w-[1500px] overflow-hidden rounded-2xl shadow-2xl sm:h-[650px] lg:h-[800px]"
       >
         {/* IMAGE CONTAINER */}
         <motion.div
           style={{ scale, y }}
-          className="absolute inset-y-0 left-10 right-10 rounded-2xl overflow-hidden"
+          className="absolute inset-0 overflow-hidden rounded-2xl sm:inset-x-10"
         >
           <Image
             src="/vision/initiative.jpg"

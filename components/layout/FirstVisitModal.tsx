@@ -7,7 +7,7 @@ export default function FirstVisitModal() {
 
   useEffect(() => {
     const seen = localStorage.getItem("fkf_first_visit_seen");
-    if (!seen) setOpen(true);
+    if (!seen) window.setTimeout(() => setOpen(true), 0);
   }, []);
 
   const closeModal = () => {

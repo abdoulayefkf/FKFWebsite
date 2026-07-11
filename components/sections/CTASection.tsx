@@ -35,7 +35,7 @@ export default function CTASection() {
             </p>
 
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-              Join Us in Shaping Tomorrow's Leaders
+              Join Us in Shaping Tomorrow&apos;s Leaders
             </h2>
 
             <p className="mt-6 text-lg text-gray-600 max-w-xl">

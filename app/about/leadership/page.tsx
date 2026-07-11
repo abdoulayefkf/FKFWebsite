@@ -5,7 +5,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function LeadershipPage() {
-  const [selectedLeader, setSelectedLeader] = useState<any>(null);
+  type Leader = { name: string; title: string; image: string; bio: string };
+  const [selectedLeader, setSelectedLeader] = useState<Leader | null>(null);
 
   return (
     <main className="bg-white">
