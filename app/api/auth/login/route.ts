@@ -15,11 +15,23 @@ export async function POST(request: Request) {
 
   // Use the authenticated user's session and the "read own profile" RLS policy.
   // Login must not depend on the server-only Supabase secret key.
-  const { data: profile, error: profileError } = await supabase
+  let { data: profile, error: profileError } = await supabase
     .from("profiles")
     .select("role,status,must_change_password,locked_until,first_name")
     .eq("id", data.user.id)
     .single();
+
+  // If a deployment-specific cookie/RLS lookup fails, perform the same lookup
+  // on the trusted server with Vercel's Supabase service-role integration key.
+  if (profileError || !profile) {
+    const fallback = await createAdminClient()
+      .from("profiles")
+      .select("role,status,must_change_password,locked_until,first_name")
+      .eq("id", data.user.id)
+      .single();
+    profile = fallback.data;
+    profileError = fallback.error;
+  }
 
   if (profileError || !profile) {
     await supabase.auth.signOut();
