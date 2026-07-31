@@ -1,0 +1,5 @@
+project_id = "szftsebprkmxbeenjodm"
+
+[auth]
+site_url = "https://franciskoromafoundation.org"
+additional_redirect_urls = ["http://localhost:3000/**", "https://franciskoromafoundation.org/**"]

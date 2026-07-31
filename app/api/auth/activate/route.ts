@@ -1,0 +1,5 @@
+import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { strongPassword } from "@/lib/user-validation";
+import { validCsrf } from "@/lib/security";
+export async function POST(request:Request){if(!await validCsrf(request))return Response.json({error:"Invalid CSRF token"},{status:403});const body=await request.json().catch(()=>null) as {password?:string}|null;if(!strongPassword.safeParse(body?.password).success)return Response.json({error:"Weak password"},{status:400});const supabase=await createClient();const {data:{user}}=await supabase.auth.getUser();if(!user)return Response.json({error:"Activation session is invalid or expired"},{status:401});const {error}=await supabase.auth.updateUser({password:body!.password});if(error)return Response.json({error:error.message},{status:400});await createAdminClient().from("profiles").update({status:"ACTIVE",must_change_password:false}).eq("id",user.id);return Response.json({ok:true})}
