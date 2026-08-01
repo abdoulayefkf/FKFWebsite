@@ -7,6 +7,8 @@ import { siteUrl } from "@/lib/site-content";
 // NEW GLOBAL COMPONENTS
 import ChatBot from "@/components/layout/ChatBot";
 import FirstVisitModal from "@/components/layout/FirstVisitModal";
+import { RecoveryHashHandler } from "@/components/auth/RecoveryHashHandler";
+import { getSiteSettings } from "@/lib/cms";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -17,14 +19,17 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", images: ["/about/about-image.jpg"] },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const settings=await getSiteSettings();
   return (
     <html lang="en">
       <body className="overflow-x-hidden bg-white text-black antialiased">
+
+        <RecoveryHashHandler />
 
         {/* GLOBAL POPUP (first visit only) */}
         <FirstVisitModal />
@@ -33,7 +38,7 @@ export default function RootLayout({
         <ChatBot />
 
         {/* NAV + PAGE CONTENT */}
-        <Navbar />
+        <Navbar logoUrl={settings.logoUrl} organizationName={settings.organizationName} />
 
         <main id="main-content" className="min-h-screen">{children}</main>
 

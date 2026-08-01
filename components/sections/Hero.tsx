@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 
-export default function Hero() {
+export default function Hero({title="Empowering the Next Generation of Global Leaders and Changemakers",description="The Francis Koroma Foundation is a U.S.-based 501(c)(3) nonprofit organization committed to helping young people successfully navigate the transition into adulthood through academic support, mentorship opportunities, leadership training, and personal development initiatives.",videoUrl="https://www.youtube.com/embed/De-BByJLQxw?autoplay=1&mute=1&loop=1&playlist=De-BByJLQxw&controls=0&modestbranding=1"}:{title?:string;description?:string;videoUrl?:string}) {
   return (
     <section className="relative h-screen w-full overflow-hidden pt-16">
 
@@ -11,7 +11,7 @@ export default function Hero() {
 
         <iframe
           className="absolute top-1/2 left-1/2 w-[120vw] h-[120vh] -translate-x-1/2 -translate-y-1/2"
-          src="https://www.youtube.com/embed/De-BByJLQxw?start=0:00&autoplay=1&mute=1&loop=1&playlist=De-BByJLQxw&controls=0&modestbranding=1&showinfo=0"
+          src={videoUrl}
           title="FKF Hero Video"
           allow="autoplay; encrypted-media"
         />
@@ -27,11 +27,11 @@ export default function Hero() {
         <div className="max-w-5xl text-center text-white px-6">
 
           <h1 className="text-5xl md:text-7xl font-semibold leading-tight">
-            Empowering the Next Generation of Global Leaders and Changemakers
+            {title}
           </h1>
 
           <p className="max-w-3xl mx-auto mt-8 text-lg md:text-xl text-gray-200">
-            The Francis Koroma Foundation is a U.S.-based 501(c)(3) nonprofit organization committed to helping young people successfully navigate the transition into adulthood through academic support, mentorship opportunities, leadership training, and personal development initiatives.
+            {description}
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mt-10">

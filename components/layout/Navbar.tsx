@@ -12,7 +12,7 @@ const groups = [
   { label: "Media & Resources", links: [["Impact News", "/impact-news"], ["Gallery", "/gallery"], ["Videos", "/videos"], ["Resources", "/resources"], ["Annual Reports", "/annual-reports"]] },
 ] as const;
 
-export default function Navbar() {
+export default function Navbar({logoUrl="/fkf-logo.png",organizationName="Francis Koroma Foundation"}:{logoUrl?:string;organizationName?:string}) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   useEffect(() => { document.body.style.overflow = open ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [open]);
@@ -21,7 +21,7 @@ export default function Navbar() {
   return <header className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-white/95 shadow-sm backdrop-blur">
     <a href="#main-content" className="sr-only z-[60] bg-black px-4 py-3 text-white focus:not-sr-only focus:absolute focus:left-3 focus:top-3">Skip to content</a>
     <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-5 sm:px-8">
-      <Link href="/" aria-label="Francis Koroma Foundation home" className="rounded outline-offset-4 focus-visible:outline-2 focus-visible:outline-black"><Image src="/fkf-logo.png" alt="Francis Koroma Foundation" width={92} height={76} priority className="h-20 w-auto object-contain" /></Link>
+      <Link href="/" aria-label={`${organizationName} home`} className="rounded outline-offset-4 focus-visible:outline-2 focus-visible:outline-black"><Image src={logoUrl} alt={organizationName} width={240} height={80} unoptimized priority className="h-20 w-auto max-w-[18rem] object-contain" /></Link>
       <nav aria-label="Primary navigation" className="hidden items-center gap-5 xl:flex">
         <Link href="/" className={`nav-link ${active("/") ? "text-[#9b7600]" : ""}`}>Home</Link>
         {groups.map(group => <div key={group.label} className="group relative"><button className="nav-link flex items-center gap-1" aria-haspopup="true">{group.label}<ChevronDown aria-hidden="true" className="size-4 transition group-hover:rotate-180 group-focus-within:rotate-180" /></button><div className="invisible absolute left-0 top-full w-64 translate-y-2 rounded-xl border border-black/10 bg-white p-2 opacity-0 shadow-xl transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">{group.links.map(([label, href]) => <Link key={href} href={href} className="block rounded-lg px-4 py-3 text-sm hover:bg-amber-50 focus:bg-amber-50 focus:outline-none">{label}</Link>)}</div></div>)}
