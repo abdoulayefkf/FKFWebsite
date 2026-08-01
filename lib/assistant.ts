@@ -5,12 +5,19 @@ import type { SitePage } from "@/lib/site-content";
 
 const STOP_WORDS = new Set(["the", "and", "for", "are", "you", "your", "with", "that", "this", "have", "has", "how", "what", "who", "where", "when", "why", "can", "does", "did", "was", "were", "will", "would", "could", "should", "about", "from", "into", "there", "their", "they", "them", "our", "out", "any", "all", "some", "want", "need", "please", "tell", "give", "get", "know", "like", "more", "much", "many", "may", "his", "her", "its", "not", "but", "yes", "hello"]);
 
+/** Short words that still carry meaning here; every other 1-2 letter token is dropped. */
+const SHORT_TERMS = new Set(["un", "fkf", "sdg", "3d", "ai"]);
+
 const normalize = (value: string) => value.toLowerCase().replace(/[^a-z0-9\s]/g, " ");
 const tokenize = (value: string) =>
   normalize(value)
     .split(/\s+/)
     .map(word => (word.length > 3 && word.endsWith("s") ? word.slice(0, -1) : word))
-    .filter(word => word.length >= 2 && !STOP_WORDS.has(word));
+    .filter(word => !STOP_WORDS.has(word) && (word.length >= 3 || SHORT_TERMS.has(word)));
+
+/** Whole-word occurrences of a (de-pluralised) token, so "is" cannot match "vision". */
+const countMatches = (haystack: string, token: string) =>
+  haystack.match(new RegExp(`\\b${token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?:e?s)?\\b`, "g"))?.length ?? 0;
 
 /**
  * The knowledge base the assistant may answer from: every published page (CMS copy wins
@@ -56,18 +63,22 @@ export function retrieve(question: string, docs: KnowledgeDoc[], limit = 6): Sco
     const keywords = normalize(doc.keywords.join(" "));
     const body = normalize(doc.body);
     let score = 0;
+    let bodyScore = 0;
 
     for (const keyword of doc.keywords) {
       const phrase = normalize(keyword).trim();
       if (phrase.includes(" ") && asked.includes(phrase)) score += 6;
     }
     for (const token of new Set(tokens)) {
-      const count = (haystack: string) => haystack.split(token).length - 1;
-      if (count(title)) score += 4;
-      if (count(keywords)) score += 3;
-      score += Math.min(count(body), 3);
+      if (countMatches(title, token)) score += 4;
+      if (countMatches(keywords, token)) score += 3;
+      bodyScore += Math.min(countMatches(body, token), 2);
     }
-    return { doc, score };
+
+    // Long documents (the founder biography, for instance) hit common words in almost
+    // every question, so body matches are damped by length while title and keyword
+    // matches keep their full weight.
+    return { doc, score: score + bodyScore * (600 / (600 + body.length)) };
   });
 
   return scored
@@ -89,12 +100,14 @@ export function buildContext(results: ScoredDoc[], maxChars = 9000): string {
   return blocks.join("\n\n");
 }
 
-/** Pages worth linking under an answer - only the ones that actually matched well. */
+/** Pages worth linking under an answer - only the ones that clearly matched the question. */
 export function sourcesFrom(results: ScoredDoc[], limit = 3) {
   const seen = new Set<string>();
   const sources: { title: string; path: string }[] = [];
+  const best = results[0]?.score ?? 0;
+  const floor = Math.max(3, best * 0.6);
   for (const { doc, score } of results) {
-    if (score < 6 || seen.has(doc.path)) continue;
+    if (score < floor || seen.has(doc.path)) continue;
     seen.add(doc.path);
     sources.push({ title: doc.title, path: doc.path });
     if (sources.length === limit) break;

@@ -25,7 +25,9 @@ export function docFromSitePage(page: SitePage): KnowledgeDoc {
     id: `page:${page.path}`,
     title: page.title,
     path: page.path,
-    keywords: [page.eyebrow, ...(page.sections.flatMap(section => section.items ?? []))],
+    // Path segments make good keywords: /programs/mentorship answers "mentorship",
+    // /donate answers "donate", even when the page title words differ.
+    keywords: [page.eyebrow, ...page.path.split(/[/-]/).filter(Boolean), ...page.sections.flatMap(section => section.items ?? [])],
     body: [page.eyebrow, page.description, ...sections, cta].filter(Boolean).join("\n"),
   };
 }
@@ -149,7 +151,7 @@ Scholarship application workflows are planned for a later phase; eligibility det
   },
   {
     id: "get-involved",
-    title: "Ways to get involved: volunteer, mentor, partner, donate",
+    title: "Ways to get involved",
     path: "/volunteer",
     keywords: ["volunteer", "join", "get involved", "mentor", "apply", "help", "partnership", "partner", "collaborate", "internship", "work with you", "careers", "jobs"],
     body: `Ways to take part in the Foundation's work:
