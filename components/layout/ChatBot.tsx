@@ -61,13 +61,28 @@ export default function ChatBot() {
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  async function loadCsrf() {
+    const response = await fetch("/api/auth/csrf", {
+      cache: "no-store",
+      credentials: "same-origin",
+    });
+    if (!response.ok) throw new Error("Could not initialize the assistant");
+    const data = await response.json();
+    if (typeof data.csrfToken !== "string" || !data.csrfToken) throw new Error("Invalid assistant session");
+    setCsrf(data.csrfToken);
+    return data.csrfToken as string;
+  }
+
   useEffect(() => {
-    if (!open || csrf) return;
-    fetch("/api/auth/csrf")
-      .then(response => response.json())
-      .then(data => setCsrf(data.csrfToken))
-      .catch(() => setError("The assistant is unavailable right now."));
-  }, [open, csrf]);
+    void fetch("/api/auth/csrf", { cache: "no-store", credentials: "same-origin" })
+      .then(async response => {
+        if (!response.ok) throw new Error("Could not initialize the assistant");
+        const data = await response.json();
+        if (typeof data.csrfToken !== "string" || !data.csrfToken) throw new Error("Invalid assistant session");
+        setCsrf(data.csrfToken);
+      })
+      .catch(() => setError("The assistant is unavailable right now. Please try again."));
+  }, []);
 
   useEffect(() => {
     if (open) inputRef.current?.focus();
@@ -95,11 +110,15 @@ export default function ChatBot() {
     setBusy(true);
 
     try {
-      const response = await fetch("/api/assistant", {
+      const token = csrf || await loadCsrf();
+      const request = (csrfToken: string) => fetch("/api/assistant", {
         method: "POST",
-        headers: { "content-type": "application/json", "x-csrf-token": csrf },
+        credentials: "same-origin",
+        headers: { "content-type": "application/json", "x-csrf-token": csrfToken },
         body: JSON.stringify({ message, history }),
       });
+      let response = await request(token);
+      if (response.status === 403) response = await request(await loadCsrf());
       const data = await response.json();
       if (!response.ok) setError(data.error ?? "Something went wrong. Please try again.");
       else setMessages(current => [...current, { role: "assistant", content: data.reply, sources: data.sources }]);
@@ -120,7 +139,7 @@ export default function ChatBot() {
         aria-expanded={open}
         aria-controls="fkf-assistant"
         aria-label={open ? "Close the FKF Assistant" : "Open the FKF Assistant"}
-        className="fixed bottom-6 right-6 z-50 flex size-14 items-center justify-center rounded-full bg-[#d4a501] text-black shadow-xl transition hover:bg-[#e1b726] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+        className="fixed bottom-6 right-6 z-[70] flex size-14 items-center justify-center rounded-full bg-[#d4a501] text-black shadow-xl transition hover:bg-[#e1b726] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
       >
         {open ? <X className="size-6" /> : <MessageCircle className="size-6" />}
       </button>
@@ -131,7 +150,7 @@ export default function ChatBot() {
           id="fkf-assistant"
           role="dialog"
           aria-label="FKF Assistant"
-          className="fixed bottom-24 left-4 right-4 z-50 flex h-[70vh] max-h-[34rem] flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-2xl sm:left-auto sm:right-6 sm:w-96"
+          className="fixed bottom-24 left-4 right-4 z-[70] flex h-[70vh] max-h-[34rem] flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-2xl sm:left-auto sm:right-6 sm:w-96"
         >
           <div className="flex items-center justify-between border-b bg-[#d4a501] px-4 py-3">
             <div>
@@ -183,7 +202,6 @@ export default function ChatBot() {
                     key={suggestion}
                     type="button"
                     onClick={() => send(suggestion)}
-                    disabled={!csrf}
                     className="rounded-full border border-slate-200 px-3 py-1.5 text-xs text-slate-700 transition hover:border-[#d4a501] hover:bg-amber-50 disabled:opacity-50"
                   >
                     {suggestion}
@@ -230,7 +248,7 @@ export default function ChatBot() {
             />
             <button
               type="submit"
-              disabled={busy || !csrf || !input.trim()}
+              disabled={busy || !input.trim()}
               aria-label="Send message"
               className="rounded-lg bg-[#d4a501] p-2.5 text-black transition hover:bg-[#e1b726] disabled:opacity-40"
             >
