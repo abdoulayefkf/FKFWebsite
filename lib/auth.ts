@@ -8,6 +8,12 @@ export async function currentUser() {
   const supabase = await createClient(); const { data: { user } } = await supabase.auth.getUser(); if (!user) return null;
   const { data } = await supabase.from("profiles").select("*").eq("id", user.id).single(); if (!data) return null; return mapProfile(data);
 }
+export function isStaff(user: AppUser | null): user is AppUser {
+  return Boolean(user && user.status === "ACTIVE" && ["OWNER", "ADMINISTRATOR", "EDITOR"].includes(user.role));
+}
+export function adminHome(user: Pick<AppUser, "role">) {
+  return user.role === "OWNER" ? "/admin/users" : "/admin/cms";
+}
 export async function requireOwner() {
   const user = await currentUser(); if (!user) return { error: Response.json({ error:"Authentication required" },{status:401}) } as const;
   if (user.role !== "OWNER" || user.status !== "ACTIVE") return { error: Response.json({ error:"Owner access required" },{status:403}) } as const; return { user } as const;

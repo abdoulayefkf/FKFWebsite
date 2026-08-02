@@ -9,12 +9,12 @@ export default function Hero({title="Empowering the Next Generation of Global Le
       {/* VIDEO BACKGROUND */}
       <div className="absolute inset-0 overflow-hidden z-0">
 
-        <iframe
+        {videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be") ? <iframe
           className="absolute top-1/2 left-1/2 w-[120vw] h-[120vh] -translate-x-1/2 -translate-y-1/2"
           src={videoUrl}
           title="FKF Hero Video"
           allow="autoplay; encrypted-media"
-        />
+        /> : <video src={videoUrl} autoPlay muted loop playsInline className="h-full w-full object-cover" />}
 
       </div>
 
