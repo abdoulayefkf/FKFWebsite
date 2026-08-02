@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -51,10 +52,11 @@ export default function CTASection() {
               className="inline-block"
             >
               <Button
+                asChild
                 size="lg"
                 className="mt-8 bg-yellow-400 hover:bg-yellow-600 hover:shadow-xl transition-all duration-300 text-black"
               >
-                Support Our Mission
+                <Link href="/support-us">Support Our Mission</Link>
               </Button>
             </motion.div>
 

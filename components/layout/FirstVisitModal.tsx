@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function FirstVisitModal() {
   const [open, setOpen] = useState(false);
@@ -29,15 +30,13 @@ export default function FirstVisitModal() {
           Get updates on our impact, stories, and blog posts.
         </p>
 
-        <input
-          type="email"
-          placeholder="Enter your email"
-          className="w-full border rounded-lg px-4 py-3 mb-4"
-        />
-
-        <button className="w-full bg-yellow-500 text-white py-3 rounded-lg">
-          Subscribe
-        </button>
+        <Link
+          href="/contact"
+          onClick={closeModal}
+          className="block w-full rounded-lg bg-yellow-500 px-4 py-3 text-center font-semibold text-black"
+        >
+          Contact Us to Stay Connected
+        </Link>
 
         <button
           onClick={closeModal}

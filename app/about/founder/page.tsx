@@ -758,7 +758,7 @@ export default function FounderPage() {
 
           <div className="flex justify-center gap-4 mt-10">
             <Link
-              href="/get-involved"
+              href="/volunteer"
               className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-semibold"
             >
               Get Involved

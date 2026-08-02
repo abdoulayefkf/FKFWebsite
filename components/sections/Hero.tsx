@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Hero({title="Empowering the Next Generation of Global Leaders and Changemakers",description="The Francis Koroma Foundation is a U.S.-based 501(c)(3) nonprofit organization committed to helping young people successfully navigate the transition into adulthood through academic support, mentorship opportunities, leadership training, and personal development initiatives.",videoUrl="https://www.youtube.com/embed/De-BByJLQxw?autoplay=1&mute=1&loop=1&playlist=De-BByJLQxw&controls=0&modestbranding=1"}:{title?:string;description?:string;videoUrl?:string}) {
   return (
@@ -37,19 +38,21 @@ export default function Hero({title="Empowering the Next Generation of Global Le
           <div className="flex flex-wrap justify-center gap-4 mt-10">
 
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="bg-transparent text-white border-yellow-400 hover:bg-white hover:text-black"
             >
-              Get Involved
+              <Link href="/volunteer">Get Involved</Link>
             </Button>
 
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="bg-transparent text-white border-yellow-400 hover:bg-white hover:text-black"
             >
-              Learn More
+              <Link href="/about">Learn More</Link>
             </Button>
 
           </div>

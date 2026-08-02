@@ -52,7 +52,7 @@ export default function FocusAreas() {
 
           {/* CARD 1 */}
           <motion.div style={{ y: y1 }}>
-            <Link href="/programs/academic-support">
+            <Link href="/programs/scholarship">
               <div className="group cursor-pointer rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-2xl hover:shadow-xl transition-all duration-300">
 
                 {/* IMAGE */}
@@ -124,7 +124,7 @@ export default function FocusAreas() {
 
           {/* CARD 3 */}
           <motion.div style={{ y: y3 }}>
-            <Link href="/programs/leadership">
+            <Link href="/programs">
               <div className="group cursor-pointer rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-2xl hover:shadow-xl transition-all duration-300">
 
                 <div className="relative h-72 w-full">
